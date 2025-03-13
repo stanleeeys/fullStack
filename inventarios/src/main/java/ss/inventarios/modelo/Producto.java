@@ -1,24 +1,26 @@
 package ss.inventarios.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@Entity
+@Table(name = "productos")
 public class Producto {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer idProducto;
-    String descripcion;
-    Double precio;
-    Integer existencia;
+    private Integer idProducto;
+    
+    @Column(nullable = false)
+    private String nombre;
+    
+    @Column
+    private String descripcion;
+    
+    @Column(nullable = false)
+    private Double precio;
+    
+    @Column(nullable = false)
+    private Integer existencias;
 }
